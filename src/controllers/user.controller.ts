@@ -1,3 +1,9 @@
 class UserController {
-  async createUser() {}
+  async create() {}
+  async update() {}
+
+  async delete() {}
+  async get() {}
 }
+
+export default new UserController();
