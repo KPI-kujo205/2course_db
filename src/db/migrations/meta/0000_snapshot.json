@@ -1,0 +1,791 @@
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "prevId": "",
+  "version": "5",
+  "dialect": "mysql",
+  "tables": {
+    "Action": {
+      "name": "Action",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "date": {
+          "autoincrement": false,
+          "name": "date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Poll_id": {
+          "autoincrement": false,
+          "name": "Poll_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Grant_id": {
+          "autoincrement": false,
+          "name": "Grant_id",
+          "type": "int(10) unsigned zerofill",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "State_id": {
+          "autoincrement": false,
+          "name": "State_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {
+        "Action_id_Poll_id_Grant_id_State_id_pk": {
+          "name": "Action_id_Poll_id_Grant_id_State_id_pk",
+          "columns": [
+            "id",
+            "Poll_id",
+            "Grant_id",
+            "State_id"
+          ]
+        }
+      },
+      "indexes": {
+        "fk_Action_Grant1_idx": {
+          "name": "fk_Action_Grant1_idx",
+          "columns": [
+            "Grant_id"
+          ],
+          "isUnique": false
+        },
+        "fk_Action_Poll1_idx": {
+          "name": "fk_Action_Poll1_idx",
+          "columns": [
+            "Poll_id"
+          ],
+          "isUnique": false
+        },
+        "fk_Action_State1_idx": {
+          "name": "fk_Action_State1_idx",
+          "columns": [
+            "State_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "fk_Action_Grant1": {
+          "name": "fk_Action_Grant1",
+          "tableFrom": "Action",
+          "tableTo": "Grant",
+          "columnsFrom": [
+            "Grant_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "fk_Action_Poll1": {
+          "name": "fk_Action_Poll1",
+          "tableFrom": "Action",
+          "tableTo": "Poll",
+          "columnsFrom": [
+            "Poll_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "fk_Action_State1": {
+          "name": "fk_Action_State1",
+          "tableFrom": "Action",
+          "tableTo": "State",
+          "columnsFrom": [
+            "State_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "Answer": {
+      "name": "Answer",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "field": {
+          "autoincrement": false,
+          "name": "field",
+          "type": "blob",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Question_id": {
+          "autoincrement": false,
+          "name": "Question_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {
+        "Answer_id_Question_id_pk": {
+          "name": "Answer_id_Question_id_pk",
+          "columns": [
+            "id",
+            "Question_id"
+          ]
+        }
+      },
+      "indexes": {
+        "fk_Answer_Question_idx": {
+          "name": "fk_Answer_Question_idx",
+          "columns": [
+            "Question_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "fk_Answer_Question": {
+          "name": "fk_Answer_Question",
+          "tableFrom": "Answer",
+          "tableTo": "Question",
+          "columnsFrom": [
+            "Question_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "EarnedMoney": {
+      "name": "EarnedMoney",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "date": {
+          "autoincrement": false,
+          "name": "date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "amount": {
+          "autoincrement": false,
+          "name": "amount",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tookAway": {
+          "autoincrement": false,
+          "name": "tookAway",
+          "type": "tinyint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "User_id": {
+          "autoincrement": false,
+          "name": "User_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Poll_id": {
+          "autoincrement": false,
+          "name": "Poll_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {
+        "EarnedMoney_id_User_id_Poll_id_pk": {
+          "name": "EarnedMoney_id_User_id_Poll_id_pk",
+          "columns": [
+            "id",
+            "User_id",
+            "Poll_id"
+          ]
+        }
+      },
+      "indexes": {
+        "fk_EarnedMoney_Poll1_idx": {
+          "name": "fk_EarnedMoney_Poll1_idx",
+          "columns": [
+            "Poll_id"
+          ],
+          "isUnique": false
+        },
+        "fk_EarnedMoney_User1_idx": {
+          "name": "fk_EarnedMoney_User1_idx",
+          "columns": [
+            "User_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "fk_EarnedMoney_Poll1": {
+          "name": "fk_EarnedMoney_Poll1",
+          "tableFrom": "EarnedMoney",
+          "tableTo": "Poll",
+          "columnsFrom": [
+            "Poll_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "fk_EarnedMoney_User1": {
+          "name": "fk_EarnedMoney_User1",
+          "tableFrom": "EarnedMoney",
+          "tableTo": "User",
+          "columnsFrom": [
+            "User_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "Grant": {
+      "name": "Grant",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "int(10) unsigned zerofill",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "assignedAt": {
+          "autoincrement": false,
+          "name": "assignedAt",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Role_id": {
+          "autoincrement": false,
+          "name": "Role_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "User_id": {
+          "autoincrement": false,
+          "name": "User_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Answer_id": {
+          "autoincrement": false,
+          "name": "Answer_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Answer_Question_id": {
+          "autoincrement": false,
+          "name": "Answer_Question_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Poll_id": {
+          "autoincrement": false,
+          "name": "Poll_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {
+        "Grant_id_Role_id_User_id_pk": {
+          "name": "Grant_id_Role_id_User_id_pk",
+          "columns": [
+            "id",
+            "Role_id",
+            "User_id"
+          ]
+        }
+      },
+      "indexes": {
+        "fk_Grant_Answer1_idx": {
+          "name": "fk_Grant_Answer1_idx",
+          "columns": [
+            "Answer_id",
+            "Answer_Question_id"
+          ],
+          "isUnique": false
+        },
+        "fk_Grant_Poll1_idx": {
+          "name": "fk_Grant_Poll1_idx",
+          "columns": [
+            "Poll_id"
+          ],
+          "isUnique": false
+        },
+        "fk_Grant_Role1_idx": {
+          "name": "fk_Grant_Role1_idx",
+          "columns": [
+            "Role_id"
+          ],
+          "isUnique": false
+        },
+        "fk_Grant_User1_idx": {
+          "name": "fk_Grant_User1_idx",
+          "columns": [
+            "User_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "fk_Grant_Answer1": {
+          "name": "fk_Grant_Answer1",
+          "tableFrom": "Grant",
+          "tableTo": "Answer",
+          "columnsFrom": [
+            "Answer_id",
+            "Answer_Question_id"
+          ],
+          "columnsTo": [
+            "id",
+            "Question_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "fk_Grant_Poll1": {
+          "name": "fk_Grant_Poll1",
+          "tableFrom": "Grant",
+          "tableTo": "Poll",
+          "columnsFrom": [
+            "Poll_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "fk_Grant_Role1": {
+          "name": "fk_Grant_Role1",
+          "tableFrom": "Grant",
+          "tableTo": "Role",
+          "columnsFrom": [
+            "Role_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "fk_Grant_User1": {
+          "name": "fk_Grant_User1",
+          "tableFrom": "Grant",
+          "tableTo": "User",
+          "columnsFrom": [
+            "User_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "Poll": {
+      "name": "Poll",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "title": {
+          "autoincrement": false,
+          "name": "title",
+          "type": "mediumtext",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "autoincrement": false,
+          "name": "description",
+          "type": "longtext",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {
+        "Poll_id_pk": {
+          "name": "Poll_id_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "Qualification": {
+      "name": "Qualification",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "level": {
+          "autoincrement": false,
+          "name": "level",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "User_id": {
+          "autoincrement": false,
+          "name": "User_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Specialty_id": {
+          "autoincrement": false,
+          "name": "Specialty_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {
+        "Qualification_id_User_id_Specialty_id_pk": {
+          "name": "Qualification_id_User_id_Specialty_id_pk",
+          "columns": [
+            "id",
+            "User_id",
+            "Specialty_id"
+          ]
+        }
+      },
+      "indexes": {
+        "fk_Qualification_Specialty1_idx": {
+          "name": "fk_Qualification_Specialty1_idx",
+          "columns": [
+            "Specialty_id"
+          ],
+          "isUnique": false
+        },
+        "fk_Qualification_User1_idx": {
+          "name": "fk_Qualification_User1_idx",
+          "columns": [
+            "User_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "fk_Qualification_Specialty1": {
+          "name": "fk_Qualification_Specialty1",
+          "tableFrom": "Qualification",
+          "tableTo": "Specialty",
+          "columnsFrom": [
+            "Specialty_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "fk_Qualification_User1": {
+          "name": "fk_Qualification_User1",
+          "tableFrom": "Qualification",
+          "tableTo": "User",
+          "columnsFrom": [
+            "User_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "Question": {
+      "name": "Question",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "autoincrement": false,
+          "name": "type",
+          "type": "mediumtext",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "text": {
+          "autoincrement": false,
+          "name": "text",
+          "type": "longtext",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Poll_id": {
+          "autoincrement": false,
+          "name": "Poll_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {
+        "Question_id_Poll_id_pk": {
+          "name": "Question_id_Poll_id_pk",
+          "columns": [
+            "id",
+            "Poll_id"
+          ]
+        }
+      },
+      "indexes": {
+        "fk_Question_Poll1_idx": {
+          "name": "fk_Question_Poll1_idx",
+          "columns": [
+            "Poll_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "fk_Question_Poll1": {
+          "name": "fk_Question_Poll1",
+          "tableFrom": "Question",
+          "tableTo": "Poll",
+          "columnsFrom": [
+            "Poll_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "Role": {
+      "name": "Role",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "autoincrement": false,
+          "name": "name",
+          "type": "tinytext",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {
+        "Role_id_pk": {
+          "name": "Role_id_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "Specialty": {
+      "name": "Specialty",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "autoincrement": false,
+          "name": "name",
+          "type": "mediumtext",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {
+        "Specialty_id_pk": {
+          "name": "Specialty_id_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "State": {
+      "name": "State",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "text": {
+          "autoincrement": false,
+          "name": "text",
+          "type": "longtext",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "autoincrement": false,
+          "name": "type",
+          "type": "mediumtext",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {
+        "State_id_pk": {
+          "name": "State_id_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "User": {
+      "name": "User",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "mail": {
+          "autoincrement": false,
+          "name": "mail",
+          "type": "mediumtext",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "password": {
+          "autoincrement": false,
+          "name": "password",
+          "type": "mediumtext",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "autoincrement": false,
+          "name": "name",
+          "type": "mediumtext",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "age": {
+          "autoincrement": false,
+          "name": "age",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gender": {
+          "autoincrement": false,
+          "name": "gender",
+          "type": "mediumtext",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {
+        "User_id_pk": {
+          "name": "User_id_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "schemas": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  }
+}
