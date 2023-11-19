@@ -18,7 +18,7 @@ module.exports = {
     ],
   ],
   port: 3030,
-  base: "/db_labs/",
+  base: "/2course_db/",
   theme: "cool",
   // dest: 'dist',
   head: [
