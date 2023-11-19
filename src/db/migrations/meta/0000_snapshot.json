@@ -8,7 +8,7 @@
       "name": "Action",
       "columns": {
         "id": {
-          "autoincrement": false,
+          "autoincrement": true,
           "name": "id",
           "type": "int",
           "primaryKey": false,
@@ -124,7 +124,7 @@
       "name": "Answer",
       "columns": {
         "id": {
-          "autoincrement": false,
+          "autoincrement": true,
           "name": "id",
           "type": "int",
           "primaryKey": false,
@@ -286,7 +286,7 @@
       "name": "Grant",
       "columns": {
         "id": {
-          "autoincrement": false,
+          "autoincrement": true,
           "name": "id",
           "type": "int(10) unsigned zerofill",
           "primaryKey": false,
@@ -475,7 +475,7 @@
       "name": "Qualification",
       "columns": {
         "id": {
-          "autoincrement": false,
+          "autoincrement": true,
           "name": "id",
           "type": "int",
           "primaryKey": false,
@@ -563,7 +563,7 @@
       "name": "Question",
       "columns": {
         "id": {
-          "autoincrement": false,
+          "autoincrement": true,
           "name": "id",
           "type": "int",
           "primaryKey": false,
@@ -630,7 +630,7 @@
       "name": "Role",
       "columns": {
         "id": {
-          "autoincrement": false,
+          "autoincrement": true,
           "name": "id",
           "type": "int",
           "primaryKey": false,
@@ -660,7 +660,7 @@
       "name": "Specialty",
       "columns": {
         "id": {
-          "autoincrement": false,
+          "autoincrement": true,
           "name": "id",
           "type": "int",
           "primaryKey": false,
@@ -690,7 +690,7 @@
       "name": "State",
       "columns": {
         "id": {
-          "autoincrement": false,
+          "autoincrement": true,
           "name": "id",
           "type": "int",
           "primaryKey": false,
@@ -727,7 +727,7 @@
       "name": "User",
       "columns": {
         "id": {
-          "autoincrement": false,
+          "autoincrement": true,
           "name": "id",
           "type": "int",
           "primaryKey": false,

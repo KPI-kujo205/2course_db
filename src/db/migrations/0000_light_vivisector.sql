@@ -2,7 +2,7 @@
 -- If you want to run this migration please uncomment this code before executing migrations
 /*
 CREATE TABLE `Action` (
-	`id` int NOT NULL,
+	`id` int AUTO_INCREMENT NOT NULL,
 	`date` date NOT NULL,
 	`Poll_id` int NOT NULL,
 	`Grant_id` int(10) unsigned zerofill NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE `Action` (
 );
 --> statement-breakpoint
 CREATE TABLE `Answer` (
-	`id` int NOT NULL,
+	`id` int AUTO_INCREMENT NOT NULL,
 	`field` blob NOT NULL,
 	`Question_id` int NOT NULL,
 	CONSTRAINT `Answer_id_Question_id_pk` PRIMARY KEY(`id`,`Question_id`)
@@ -28,7 +28,7 @@ CREATE TABLE `EarnedMoney` (
 );
 --> statement-breakpoint
 CREATE TABLE `Grant` (
-	`id` int(10) unsigned zerofill NOT NULL,
+	`id` int(10) unsigned zerofill AUTO_INCREMENT NOT NULL,
 	`assignedAt` date NOT NULL,
 	`Role_id` int NOT NULL,
 	`User_id` int NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE `Poll` (
 );
 --> statement-breakpoint
 CREATE TABLE `Qualification` (
-	`id` int NOT NULL,
+	`id` int AUTO_INCREMENT NOT NULL,
 	`level` int NOT NULL,
 	`User_id` int NOT NULL,
 	`Specialty_id` int NOT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE `Qualification` (
 );
 --> statement-breakpoint
 CREATE TABLE `Question` (
-	`id` int NOT NULL,
+	`id` int AUTO_INCREMENT NOT NULL,
 	`type` mediumtext NOT NULL,
 	`text` longtext NOT NULL,
 	`Poll_id` int NOT NULL,
@@ -62,26 +62,26 @@ CREATE TABLE `Question` (
 );
 --> statement-breakpoint
 CREATE TABLE `Role` (
-	`id` int NOT NULL,
+	`id` int AUTO_INCREMENT NOT NULL,
 	`name` tinytext NOT NULL,
 	CONSTRAINT `Role_id_pk` PRIMARY KEY(`id`)
 );
 --> statement-breakpoint
 CREATE TABLE `Specialty` (
-	`id` int NOT NULL,
+	`id` int AUTO_INCREMENT NOT NULL,
 	`name` mediumtext NOT NULL,
 	CONSTRAINT `Specialty_id_pk` PRIMARY KEY(`id`)
 );
 --> statement-breakpoint
 CREATE TABLE `State` (
-	`id` int NOT NULL,
+	`id` int AUTO_INCREMENT NOT NULL,
 	`text` longtext NOT NULL,
 	`type` mediumtext NOT NULL,
 	CONSTRAINT `State_id_pk` PRIMARY KEY(`id`)
 );
 --> statement-breakpoint
 CREATE TABLE `User` (
-	`id` int NOT NULL,
+	`id` int AUTO_INCREMENT NOT NULL,
 	`mail` mediumtext NOT NULL,
 	`password` mediumtext NOT NULL,
 	`name` mediumtext NOT NULL,

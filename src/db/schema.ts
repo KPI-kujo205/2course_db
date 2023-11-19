@@ -17,7 +17,7 @@ import { sql } from "drizzle-orm";
 export const action = mysqlTable(
   "Action",
   {
-    id: int("id").notNull(),
+    id: int("id").autoincrement().notNull(),
     // you can use { mode: 'date' }, if you want to have Date as type for this column
     date: date("date", { mode: "string" }).notNull(),
     pollId: int("Poll_id")
@@ -46,7 +46,7 @@ export const action = mysqlTable(
 export const answer = mysqlTable(
   "Answer",
   {
-    id: int("id").notNull(),
+    id: int("id").autoincrement().notNull(),
     // Warning: Can't parse blob from database
     // blobType: blob("field").notNull(),
     questionId: int("Question_id")
@@ -94,7 +94,7 @@ export const earnedMoney = mysqlTable(
 export const grant = mysqlTable(
   "Grant",
   {
-    id: int("id").notNull(),
+    id: int("id").autoincrement().notNull(),
     // you can use { mode: 'date' }, if you want to have Date as type for this column
     assignedAt: date("assignedAt", { mode: "string" }).notNull(),
     roleId: int("Role_id")
@@ -146,7 +146,7 @@ export const poll = mysqlTable(
 export const qualification = mysqlTable(
   "Qualification",
   {
-    id: int("id").notNull(),
+    id: int("id").autoincrement().notNull(),
     level: int("level").notNull(),
     userId: int("User_id")
       .notNull()
@@ -174,7 +174,7 @@ export const qualification = mysqlTable(
 export const question = mysqlTable(
   "Question",
   {
-    id: int("id").notNull(),
+    id: int("id").autoincrement().notNull(),
     type: mediumtext("type").notNull(),
     text: longtext("text").notNull(),
     pollId: int("Poll_id")
@@ -195,7 +195,7 @@ export const question = mysqlTable(
 export const role = mysqlTable(
   "Role",
   {
-    id: int("id").notNull(),
+    id: int("id").autoincrement().notNull(),
     name: tinytext("name").notNull(),
   },
   (table) => {
@@ -208,7 +208,7 @@ export const role = mysqlTable(
 export const specialty = mysqlTable(
   "Specialty",
   {
-    id: int("id").notNull(),
+    id: int("id").autoincrement().notNull(),
     name: mediumtext("name").notNull(),
   },
   (table) => {
@@ -224,7 +224,7 @@ export const specialty = mysqlTable(
 export const state = mysqlTable(
   "State",
   {
-    id: int("id").notNull(),
+    id: int("id").autoincrement().notNull(),
     text: longtext("text").notNull(),
     type: mediumtext("type").notNull(),
   },
@@ -238,7 +238,7 @@ export const state = mysqlTable(
 export const user = mysqlTable(
   "User",
   {
-    id: int("id").notNull(),
+    id: int("id").autoincrement().notNull(),
     mail: mediumtext("mail").notNull(),
     password: mediumtext("password").notNull(),
     name: mediumtext("name").notNull(),

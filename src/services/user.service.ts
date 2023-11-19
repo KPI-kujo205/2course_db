@@ -5,10 +5,7 @@ import { user } from "../db/schema";
 
 class UserService {
   async create(req: z.infer<typeof createUserSchema>) {
-    // db.insert(user).values(
-    //
-    //
-    // )
+    db.insert(user).values();
   }
   async update(req: z.infer<typeof updateUserSchema>) {
     // db.update(user).values(
