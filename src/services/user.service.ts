@@ -2,22 +2,46 @@ import db from "../db";
 import { z } from "zod";
 import { updateUserSchema, createUserSchema } from "../zodSchemas/user.schema";
 import { user } from "../db/schema";
+import { eq, getTableColumns, sql } from "drizzle-orm";
+import * as console from "console";
+
+const { password, ...nonPasswordColumns } = getTableColumns(user);
 
 class UserService {
-  async create(req: z.infer<typeof createUserSchema>) {
-    db.insert(user).values();
+  async create(body: z.infer<typeof createUserSchema>["body"]) {
+    const { roleId } = body;
+    const [data] = await db.insert(user).values(body);
+    return data.insertId;
   }
-  async update(req: z.infer<typeof updateUserSchema>) {
-    // db.update(user).values(
-    //     ...req.body
-    // ).where(user.id===req.params.userId)
+  async update(
+    body: z.infer<(typeof updateUserSchema)["body"]>,
+    userId: string,
+  ) {
+    await db
+      .update(user)
+      .set({
+        age: body.age,
+        gender: body.gender,
+        name: body.name,
+        mail: body.mail,
+      })
+      .where(eq(user.id, userId));
+
+    return await this.get(userId);
   }
 
-  async delete(req: Request, res: Response) {}
+  async delete(userId: string) {
+    await db.delete(user).where(eq(user.id, userId));
+
+    return { message: "Deleted successfully" };
+  }
+
   async get(userId: string) {
-    const user = await db.select(user).where((userId) => userId === user.id);
+    return db.select(nonPasswordColumns).from(user).where({ id: userId });
+  }
 
-    return user;
+  async getAll() {
+    return db.select(nonPasswordColumns).from(user);
   }
 }
 
