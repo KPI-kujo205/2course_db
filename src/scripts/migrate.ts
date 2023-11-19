@@ -1,8 +1,8 @@
-import database from "../src/database";
+import db from "../db";
 import { migrate } from "drizzle-orm/mysql2/migrator";
 
 try {
-  migrate(database, { migrationsFolder: "src/db/migrations" }).then(() => {
+  migrate(db, { migrationsFolder: "src/db/migrations" }).then(() => {
     console.log("✅ Migrations done sucessfully");
     process.exit(0);
   });
